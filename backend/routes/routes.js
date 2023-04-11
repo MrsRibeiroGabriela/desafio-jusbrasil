@@ -7,8 +7,8 @@ import {
 
 const routes = express.Router();
 
-routes.get('/record', getRecordByCNJ);
-routes.get('/records', getRecordsByCourt);
-routes.get('/courts', getAllCourts);
+routes.get('/api/record', getRecordByCNJ);
+routes.get('/api/records', getRecordsByCourt);
+routes.get('/api/courts', getAllCourts);
 
 export default routes;

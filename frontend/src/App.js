@@ -1,6 +1,6 @@
 //components
-import Header from "./components/Header/Header";
-import AnimRoutes from "./components/AnimRoutes/AnimRoutes";
+import Header from "./components/Header/Header"
+import AnimRoutes from "./routes/AnimRoutes";
 import Footer from "./components/Footer/Footer";
 
 //import router

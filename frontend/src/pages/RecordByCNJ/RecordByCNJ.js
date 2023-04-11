@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "../../api/api";
+import api from "../../utils/apiConfig";
 import { useNavigate } from "react-router-dom";
 import Form from "../../components/Infos/Infos";
 import Timeline from "../../components/Timeline/Timeline";
@@ -27,6 +27,7 @@ const Info = () => {
         console.log(err);
       });
   }, [cnj, history]);
+
 
   return (
     <motion.section

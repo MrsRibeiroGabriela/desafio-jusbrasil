@@ -1,7 +1,7 @@
 //pages
-import Home from "../../pages/Home/Home";
-import ListRecordsByCourt from "../../pages/ListRecordsByCourt/ListRecordsByCourt";
-import RecordByCNJ from "../../pages/RecordByCNJ/RecordByCNJ";
+import Home from "../pages/Home/Home";
+import ListRecordsByCourt from "../pages/ListRecordsByCourt/ListRecordsByCourt";
+import RecordByCNJ from "../pages/RecordByCNJ/RecordByCNJ";
 
 //router
 import { Routes, Route, useLocation } from "react-router-dom";

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "../../api/api";
+import api from "../../utils/apiConfig";
 import { useNavigate } from "react-router-dom";
 import BackButton from "../BackButton/BackButton";
 
@@ -28,7 +28,7 @@ const List = () => {
       <BackButton />
       <h2 className="pb-2">
         Resultados de busca por processos em:{" "}
-        <span className="text-primary">{tr}</span>
+        <span className="text-primary font-bold">{tr}</span>
       </h2>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         {records.length === 0 ? (

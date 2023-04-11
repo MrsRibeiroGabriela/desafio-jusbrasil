@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import api from "../../api/api";
+import api from "../../utils/apiConfig";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import InputMask from "react-input-mask";
 import { useNavigate } from "react-router-dom";
@@ -43,14 +43,13 @@ function SearchBar() {
     resetForm();
   };
 
-  
   return (
     <Formik
       initialValues={{ tribunal: "", processo: "" }}
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
-      {({ errors, setFieldValue  }) => (
+      {({ errors }) => (
         <Form
           data-testid="search-bar"
           className="flex-row justify-center items-center gap-4"

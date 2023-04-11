@@ -25,7 +25,7 @@ const Home = () => {
             transition={transition1}
             className="w-full pb-14 lg:pb-0 lg:w-auto z-10 lg:absolute flex flex-col justify-center items-center lg:items-start"
           >
-            <h1 className="h1">Consulta Processual</h1>
+            <h1 className="h1" data-testid="title">Consulta Processual</h1>
             <p className="mb-12">
               Selecione um tribunal para listar os processos ou buscar pelo número unificado
             </p>

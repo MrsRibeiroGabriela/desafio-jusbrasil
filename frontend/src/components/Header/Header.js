@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 
-const HomeHeader = () => {
+const Header = () => {
   const location = useLocation();
   return (
     <header
@@ -19,4 +19,4 @@ const HomeHeader = () => {
   );
 };
 
-export default HomeHeader;
+export default Header;
