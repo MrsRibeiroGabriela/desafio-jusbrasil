@@ -25,7 +25,6 @@ const List = () => {
 
   return (
     <div className="h-auto m-8 pb-8 overflow-y-auto">
-      <BackButton />
       <h2 className="pb-2">
         Resultados de busca por processos em:{" "}
         <span className="text-primary font-bold">{tr}</span>

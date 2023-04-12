@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import api from "../../utils/apiConfig";
 import { useNavigate } from "react-router-dom";
-import Form from "../../components/Infos/Infos";
+import Infos from "../../components/Infos/Infos";
 import Timeline from "../../components/Timeline/Timeline";
-
+import SearchBar from "../../components/SearchBar/SearchBar";
 //motion
 import { motion } from "framer-motion";
 import { transition1 } from "../../utils/transitions";
@@ -42,9 +42,10 @@ const Info = () => {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: "-80%" }}
         transition={transition1}
-        className="w-full pb-14 lg:pb-0 lg:w-auto z-10  flex flex-col justify-center items-center lg:items-center"
-      >
-        <Form record={recordByCNJ} />
+        className="w-full pb-14 mt-8 lg:pb-0 lg:w-auto z-10  flex flex-col justify-center items-center lg:items-center"
+      > 
+        <SearchBar />
+        <Infos record={recordByCNJ} />
         <Timeline updates={recordByCNJ?.movimentacoes} />
       </motion.div>
     </motion.section>

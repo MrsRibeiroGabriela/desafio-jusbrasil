@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
-import SearchBar from "../SearchBar/SearchBar";
+// import { useLocation } from "react-router-dom";
+// import SearchBar from "../SearchBar/SearchBar";
 
 const Header = () => {
-  const location = useLocation();
+  // const location = useLocation();
   return (
     <header
       data-testid="header"
@@ -14,7 +14,9 @@ const Header = () => {
           <strong>Jus</strong>Info
         </h1>
       </Link>
-      {location.pathname === "/" ? null : <SearchBar />}
+      {/* {location.pathname === "/" ? null : (
+          <SearchBar />
+      )} */}
     </header>
   );
 };

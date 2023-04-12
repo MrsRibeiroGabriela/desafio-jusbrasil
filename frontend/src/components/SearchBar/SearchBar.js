@@ -1,22 +1,12 @@
-import { useState, useEffect } from "react";
-import api from "../../utils/apiConfig";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import InputMask from "react-input-mask";
+import { useEffect } from "react";
+import { Formik, Form, Field, ErrorMessage, useFormikContext } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
+import Select from "../Select/Select";
+import Input from "../Input/Input";
 
 function SearchBar() {
   const navigate = useNavigate();
-  const [options, setOptions] = useState([]);
-
-  useEffect(() => {
-    api
-      .get("/courts")
-      .then((response) => setOptions(response.data))
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
 
   const validationSchema = Yup.object().shape({
     tribunal: Yup.string(),
@@ -24,14 +14,14 @@ function SearchBar() {
       /^\d{7}-\d{2}\.\d{4}\.\d{1}\.\d{2}\.\d{4}$/,
       "O número de processo deve ser 9999999-99.9999.9.99.9999"
     ),
-    searchButton: Yup.boolean().test(
-      "search",
-      "Por favor, preencha pelo menos um campo",
-      function (value) {
-        const { tribunal, processo } = this.parent;
-        return Boolean(tribunal) || Boolean(processo);
-      }
-    ),
+    // searchButton: Yup.boolean().test(
+    //   "search",
+    //   "Por favor, preencha pelo menos um campo",
+    //   function (value) {
+    //     const { tribunal, processo } = this.parent;
+    //     return Boolean(tribunal) || Boolean(processo);
+    //   }
+    // ),
   });
 
   const handleSubmit = (values, { resetForm }) => {
@@ -43,64 +33,91 @@ function SearchBar() {
     resetForm();
   };
 
+const FormContext = () => {
+const formik = useFormikContext();
+  useEffect(() => {
+    if (formik.values.picked === "tr") {
+      formik.setFieldValue("processo", "");
+    } else {
+      formik.setFieldValue("tribunal", "")
+    }
+  }, [formik.values.picked, formik.setFieldValue]);
+}
+  
+
   return (
     <Formik
-      initialValues={{ tribunal: "", processo: "" }}
+      initialValues={{ tribunal: "", processo: "", picked: "tr" }}
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
-      {({ errors }) => (
+      {({ errors, values, touched, isSubmitting, setFieldValue }) => (
         <Form
           data-testid="search-bar"
           className="flex-row justify-center items-center gap-4"
         >
-          <div className="flex justify-center items-center gap-4">
-            <Field
-              as="select"
-              name="tribunal"
-              id="tribunal"
-              className="my-8 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 dark:focus:border-purple-500"
+          <FormContext />
+          <div className="grid grid-cols-6 gap-x-0">
+            <div
+              className="col-start-1 col-end-7"
+              role="group"
+              aria-labelledby="my-radio-group"
             >
-              <option disabled={true} value="">
-                Escolha um tribunal
-              </option>
-              {options?.map((option) => (
-                <option
-                  key={option}
-                  value={option}
-                  className="flex items-center gap-2"
-                >
-                  {option}
-                </option>
-              ))}
-            </Field>
-            <Field
-              as={InputMask}
-              mask="9999999-99.9999.9.99.9999"
-              type="text"
-              name="processo"
-              id="processo"
-              className="my-8 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 dark:focus:purple-blue-500"
-              placeholder="Número do processo"
-            />
-
+              <label className="mr-3 ">
+                <Field className="mr-3" type="radio" name="picked" value="tr" />
+                Consultar por tribunal
+              </label>
+              <label className="mr-3">
+                <Field
+                  className="mr-3"
+                  type="radio"
+                  name="picked"
+                  value="cnj"
+                />
+                Consultar por número do processo
+              </label>
+              {values.picked === "tr" ? (
+                <Field name="tribunal">
+                  {({ field }) => (
+                    <Select
+                      name={field.name}
+                      onChange={field.onChange}
+                      value={field.value}
+                    />
+                  )}
+                </Field>
+              ) : (
+                <Field name="processo">
+                  {({ field }) => (
+                    <Input
+                      name={field.name}
+                      onChange={field.onChange}
+                      value={field.value}
+                    />
+                  )}
+                </Field>
+              )}
+            </div>
+            <div className="col-start-1 col-end-7 text-primary mb-3">
+              {errors.tribunal && (
+                <ErrorMessage component="div" name="tribunal" />
+              )}
+              {errors.processo && (
+                <ErrorMessage component="div" name="processo" />
+              )}
+              {errors.searchButton && touched.searchButton ? (
+                <div>{errors.searchButton}</div>
+              ) : null}
+            </div>
             <Field
               as="button"
               type="submit"
               name="searchButton"
-              className="flex items-center focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 disabled:opacity-75"
+              disabled={isSubmitting}
+              className="col-start-1 col-end-3 focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5"
             >
               BUSCAR
             </Field>
-          </div>
-          <div>
-            {errors.tribunal && (
-              <ErrorMessage component="div" name="tribunal" />
-            )}
-            {errors.processo && (
-              <ErrorMessage component="div" name="processo" />
-            )}
-            {errors.searchButton && <div>{errors.searchButton}</div>}
           </div>
         </Form>
       )}

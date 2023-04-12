@@ -13,7 +13,7 @@ const Home = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={transition1}
-      className="section"
+      className="section min-h-screen"
     >
       <div className="container mx-auto my-8 overflow-y-hidden relative">
         <div className="flex flex-col justify-center">
@@ -25,16 +25,23 @@ const Home = () => {
             transition={transition1}
             className="w-full pb-14 lg:pb-0 lg:w-auto z-10 lg:absolute flex flex-col justify-center items-center lg:items-start"
           >
-            <h1 className="h1" data-testid="title">Consulta Processual</h1>
+            <h1 className="h1" data-testid="title">
+              Consulta Processual
+            </h1>
             <p className="mb-12">
-              Selecione um tribunal para listar os processos ou buscar pelo número unificado
+              Selecione um tribunal para listar os processos ou buscar pelo
+              número unificado
             </p>
             <SearchBar />
           </motion.div>
           {/* second col */}
           <div className="flex justify-center lg:justify-end lg:max-h-max lg:overflow-hidden">
-            <div className="relative max-h-92 overflow-hidden">
-              <img src={MainImg} alt="Woman searching documents" />
+            <div className="relative w-full lg:w-1/2 max-h-92 overflow-hidden">
+              <img
+                src={MainImg}
+                alt="Woman searching documents"
+                className="w-full h-auto object-contain"
+              />
             </div>
           </div>
         </div>
