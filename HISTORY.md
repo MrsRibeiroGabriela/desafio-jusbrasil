@@ -10,7 +10,7 @@ Decidi começar o projeto usando essas técnicas para melhor compreender o produ
 
 ## Desenvolvendo o backend
 - Desenvolvi a API com NodeJs e Express, usando Postman para os testes de chamada: 
-[Postman link]https://elements.getpostman.com/redirect?entityId=23381075-20661dc6-b1c3-42b8-8020-e7384c38c890&entityType=collection
+[Postman link](https://elements.getpostman.com/redirect?entityId=23381075-20661dc6-b1c3-42b8-8020-e7384c38c890&entityType=collection)
 
 ## Desenvolvendo o frontend
 - Para o frontend, decidi utilizar a lib e estrutura de React mais tradicional (npx create-react-app) que vinha utilizando nas minhas últimas experiências profissionais.
@@ -37,6 +37,7 @@ Decidi começar o projeto usando essas técnicas para melhor compreender o produ
   - Criar um configuração de modo escuro (dark mode), pois uma vez que se trata de uma plataforma de acesso e leitura de processo, é agradável e mais acessível aos usuários.
   - Acrescentar novas validações e mensagens de feedbacks aos usuários com toast notes.
   - Implementar novos testes unitários e e2e para dar maior cobertura e segurança para mudanças futuras no projeto.
+  - Organizar o armazenamento de estados da aplicações em uma store com Redux.
 
 - Backend:
   - Implementar novas validações e testes em Jest e Supertest .
