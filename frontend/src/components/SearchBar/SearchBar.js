@@ -41,7 +41,7 @@ function SearchBar() {
       } else {
         formik.setFieldValue("tribunal", "");
       }
-    }, [formik.values.picked, formik.setFieldValue]);
+    }, [formik.values.picked, formik.setFieldValue]); // eslint-disable-line react-hooks/exhaustive-deps
   };
 
   return (
