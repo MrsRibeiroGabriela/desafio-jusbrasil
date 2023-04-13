@@ -15,9 +15,10 @@ const Select = (props) => {
 
   return (
     <select
+      data-testid={props.testid}
       defaultValue="default"
       name={props.name} onChange={props.onChange} 
-      className="my-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5"
+      className="my-1 bg-white border border-dark text-darkGray text-sm rounded-lg hover:border-darkHover focus:ring-secondary focus:border-secondary block w-full p-2.5"
     >
       <option disabled={true} value="default">
         Escolha um tribunal

@@ -6,9 +6,10 @@ const BackButton = () => {
   return (
     <div className="mb-6">
       <button
+        data-testid="back-btn"
         onClick={() => navigate(-1)}
         type="button"
-        className="bg-gray-800 text-white rounded-md border border-gray-100 py-2 hover:bg-purple-700 hover:text-white px-3"
+        className="absolute left-24 top-0 text-darkGray rounded-md border border-none py-2 hover:text-hoverPrimary"
       >
         <div className="flex flex-row align-middle">
           <svg

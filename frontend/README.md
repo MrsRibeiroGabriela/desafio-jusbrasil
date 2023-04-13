@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# JusInfo - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- O projeto de frontend foi construido em:
+  - React.js(bootstrapped with [Create React App]).
+  - TailwindCSS
+  - Axios
+  - Jest 
+  - Cypress
 
-## Available Scripts
+- Para instalação: 
+### `npm i`
 
-In the project directory, you can run:
-
+- Para executar:
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Abra [http://localhost:3000](http://localhost:3000) para visualizar a home no browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Nesse projeto, os usuários são apresentados a 3 páginas de navegação: 
+  - Home: usuário poderá selecionar se deseja perquisar uma lista de processo por tribunal ou se deseja perquisar diretamente pelo número do processo (CNJ).
 
-### `npm test`
+  - ListRecordsByCourt: uma lista de todos os processos relacionados ao tribunal selecionado será mostrada na página e disponibilizará um botão de acesso aos detalhes do processo. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  - RecordByCNJ: apresenta um registro com os detalhes e uma lista das movimentações feitas no andamento do processo por ordem da mais recente movimentação à mais antiga. 
 
-### `npm run build`
+**Note: A barra de pesquisa estará disponível nas 3 páginas, possibilitando ao usuário o acesso por tribunal ou por cnj a qualquer momento.**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Testes unitário
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `npm run test`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Testes e2e - Cypress
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### `npm run test:e2e`

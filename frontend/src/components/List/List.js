@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../../utils/apiConfig";
 import { useNavigate } from "react-router-dom";
-import BackButton from "../BackButton/BackButton";
 
 const List = () => {
   const [records, setRecords] = useState([]);
@@ -25,28 +24,28 @@ const List = () => {
 
   return (
     <div className="h-auto m-8 pb-8 overflow-y-auto">
-      <h2 className="pb-2">
+      <h2 data-testid="search-paragraph" className="pb-2">
         Resultados de busca por processos em:{" "}
         <span className="text-primary font-bold">{tr}</span>
       </h2>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         {records.length === 0 ? (
-          <h2>Não existe nenhum processo nesse Tribunal.</h2>
+          <h2>Não existe nenhum processo para o tribunal selecionado.</h2>
         ) : (
           records?.map((item) => (
-            <div
+            <div data-testid="search-list"
               key={item.cnj}
-              className="max-w-sm p-6 hover:bg-gray-100 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+              className="max-w-sm p-6 hover:bg-lightGray bg-white border border-lightGray rounded-lg shadow"
             >
-              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              <h5 className="mb-2 text-2xl font-bold tracking-tight text-dark">
                 Processo n. {item.cnj}
               </h5>
-              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              <p className="mb-3 font-normal text-blackish">
                 Distribuído em: {item.dataInicial}
               </p>
               <a
                 href={`/record/?cnj=${item.cnj}`}
-                className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-primary rounded-lg hover:bg-[#B3C1C7] dark:bg-purple-600 dark:hover:bg-purple-700"
+                className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-primary rounded-lg hover:bg-hoverPrimary"
               >
                 VISUALIZAR
                 <svg

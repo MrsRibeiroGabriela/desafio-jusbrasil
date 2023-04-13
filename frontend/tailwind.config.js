@@ -1,29 +1,45 @@
 /** @type {import('tailwindcss').Config} */
-const withMT = require("@material-tailwind/react/utils/withMT");
-
-module.exports = withMT({
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+module.exports = {
+  content: ["./src/**/*.{html,js}"],
   theme: {
     fontFamily: {
       primary: "Playfair Display",
       secondary: "Mulish",
     },
+    fontSize: {
+      sm: "0.8rem",
+      base: "1rem",
+      xl: "1.25rem",
+      "2xl": "1.563rem",
+      "3xl": "1.953rem",
+      "4xl": "2.441rem",
+      "5xl": "3.052rem",
+    },
     screens: {
-      sm: "540px",
-      md: "720px",
-      lg: "960px",
-      "lg-max": { max: "960px" },
-      xl: "1140px",
-      "2xl": "1320px",
+      xs: "475px", //mobile
+      sm: "640px", //tablet
+      md: "768px",
+      lg: "1024px", //laptop
+      xl: "1280px", //desktop
+      "2xl": "1536px",
     },
     colors: {
       primary: "#673ab7",
+      hoverPrimary: "#8259cb",
+      secondary: "#703fc4",
+      tertiary: "#442678",
+      grayish: "#f8fafc",
+      white: "#ffffff",
+      dark: "#201238",
+      darkHover: "#361e5f",
+      lightGray: "#F3F4F6",
+      darkGray: "#6B7280",
+      blackish: "#2f2e41"
     },
     boxShadow: {
       sm: "0 2px 4px 0 rgb(0 0 0 / 0.05)",
     },
-    extend: {
-    },
+    extend: {},
   },
   plugins: [],
-});
+};

@@ -7,12 +7,12 @@
     @apply overflow-x-hidden font-secondary bg-white;
   }
   .h1 {
-    @apply text-[54px] lg:text-[72px] font-primary font-bold capitalize leading-[120%] tracking-[-0.05em] mb-2;
+    @apply text-[54px] lg:text-[72px] font-primary text-blackish font-bold capitalize leading-[120%] tracking-[-0.05em] mb-2;
   }
   .section {
     @apply min-h-screen w-screen;
   }
   .btn {
-    @apply py-[18px] px-[50px] h-[60px] flex items-center justify-center text-base uppercase font-secondary font-semibold bg-black text-white;
+    @apply py-[18px] px-[50px] h-[60px] flex items-center justify-center text-base uppercase font-secondary font-semibold bg-dark text-white;
   }
 }

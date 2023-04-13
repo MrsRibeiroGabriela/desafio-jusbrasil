@@ -14,14 +14,14 @@ function SearchBar() {
       /^\d{7}-\d{2}\.\d{4}\.\d{1}\.\d{2}\.\d{4}$/,
       "O número de processo deve ser 9999999-99.9999.9.99.9999"
     ),
-    // searchButton: Yup.boolean().test(
-    //   "search",
-    //   "Por favor, preencha pelo menos um campo",
-    //   function (value) {
-    //     const { tribunal, processo } = this.parent;
-    //     return Boolean(tribunal) || Boolean(processo);
-    //   }
-    // ),
+    searchButton: Yup.string().test(
+      "form-filled",
+      "Preencha pelo menos um campo antes de enviar o formulário",
+      function () {
+        const { tribunal, processo } = this.parent;
+        return !!tribunal || !!processo;
+      }
+    ),
   });
 
   const handleSubmit = (values, { resetForm }) => {
@@ -33,17 +33,16 @@ function SearchBar() {
     resetForm();
   };
 
-const FormContext = () => {
-const formik = useFormikContext();
-  useEffect(() => {
-    if (formik.values.picked === "tr") {
-      formik.setFieldValue("processo", "");
-    } else {
-      formik.setFieldValue("tribunal", "")
-    }
-  }, [formik.values.picked, formik.setFieldValue]);
-}
-  
+  const FormContext = () => {
+    const formik = useFormikContext();
+    useEffect(() => {
+      if (formik.values.picked === "tr") {
+        formik.setFieldValue("processo", "");
+      } else {
+        formik.setFieldValue("tribunal", "");
+      }
+    }, [formik.values.picked, formik.setFieldValue]);
+  };
 
   return (
     <Formik
@@ -64,11 +63,12 @@ const formik = useFormikContext();
               aria-labelledby="my-radio-group"
             >
               <label className="mr-3 ">
-                <Field className="mr-3" type="radio" name="picked" value="tr" />
+                <Field data-testid="pick-tr" className="mr-3" type="radio" name="picked" value="tr" />
                 Consultar por tribunal
               </label>
               <label className="mr-3">
                 <Field
+                  data-testid="pick-cnj"
                   className="mr-3"
                   type="radio"
                   name="picked"
@@ -80,6 +80,7 @@ const formik = useFormikContext();
                 <Field name="tribunal">
                   {({ field }) => (
                     <Select
+                      testid={field.name}
                       name={field.name}
                       onChange={field.onChange}
                       value={field.value}
@@ -90,6 +91,7 @@ const formik = useFormikContext();
                 <Field name="processo">
                   {({ field }) => (
                     <Input
+                      testid={field.name}
                       name={field.name}
                       onChange={field.onChange}
                       value={field.value}
@@ -105,16 +107,13 @@ const formik = useFormikContext();
               {errors.processo && (
                 <ErrorMessage component="div" name="processo" />
               )}
-              {errors.searchButton && touched.searchButton ? (
-                <div>{errors.searchButton}</div>
-              ) : null}
             </div>
             <Field
               as="button"
               type="submit"
               name="searchButton"
               disabled={isSubmitting}
-              className="col-start-1 col-end-3 focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5"
+              className="btn col-start-1 col-end-3 focus:outline-none text-white bg-primary hover:bg-hoverPrimary focus:ring-4 focus:ring-secondary font-medium rounded-lg text-sm px-5 py-2.5"
             >
               BUSCAR
             </Field>
