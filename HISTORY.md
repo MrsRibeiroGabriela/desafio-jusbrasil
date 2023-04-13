@@ -43,3 +43,10 @@ Decidi começar o projeto usando essas técnicas para melhor compreender o produ
   - Substuir a chamada mockada no arquivo `database\db.js` para um database relacional.
   - Novas rotas para prover o CRUD por completo e autenticação
 
+Screenshots: 
+
+![home](https://user-images.githubusercontent.com/88353217/231630584-139e0790-0019-4395-9264-01d0d5486a62.png)
+![home-seo](https://user-images.githubusercontent.com/88353217/231630592-88096d7d-b1ef-46e3-82f8-046339c68ae0.png)
+![recordByCNJ](https://user-images.githubusercontent.com/88353217/231630597-b22952ce-82c6-47f7-9e6d-752cf8efcf4d.png)
+![recordsByTR](https://user-images.githubusercontent.com/88353217/231630598-f3907095-38ac-4efc-aea9-3a80d85e5a61.png)
+![seo-home](https://user-images.githubusercontent.com/88353217/231630600-d58825ca-b134-4974-bb42-4d179b047e72.png)
